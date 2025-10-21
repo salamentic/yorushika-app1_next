@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 import Sidebar from "@/app/components/Sidebar/Sidebar";
 import Main from "@/app/components/Main/Main";
 import { getSongs } from "@/lib/songs";
-import Loading from "@/app/(main)/loading";
+import Loading from "@/app/loading";
 
 // ✅ ISR設定をページレベルで行う
 export const revalidate = 3600; // 1時間ごとに再生成

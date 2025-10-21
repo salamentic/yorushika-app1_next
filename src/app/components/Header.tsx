@@ -1,7 +1,10 @@
 // import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale, useTranslations } from "next-intl";
 
 function Header() {
+  const t = useTranslations("Header");
+  const locale = useLocale();
   return (
     <>
       <header className="w-full py-8 text-white shadow-lg" style={{ backgroundColor: '#499FD8' }}>
@@ -17,7 +20,7 @@ function Header() {
                     letterSpacing: '0.1em'
                   }}>
                 <span className="mr-3">🌙</span>
-                月猫図書館
+		{t("title")}
                 <span className="ml-3">🐈‍⬛</span>
               </h1>
               
@@ -32,7 +35,7 @@ function Header() {
                fontFamily: "'Kosugi Maru', 'Rounded Mplus 1c', 'Hiragino Maru Gothic ProN', cursive",
                fontWeight: '400'
              }}>
-            ヨルシカ楽曲まとめサイト
+	    {t("description")}
           </p>
         </div>
       </header>
