@@ -14,5 +14,29 @@
     "no-filter-song": "No songs match your search criteria.",
     "no-song": "No songs available.",
     "song-list-title": "Song List ({count} total)"
+  },
+  "SongDetailContent": {
+    "share-button": "Yorushika “{name}” song info ✨",
+    "basic-info": "Basic Info",
+    "album": "Album",
+    "release": "Release",
+    "capo": "Capo",
+    "time-sig": "Time Signature:",
+    "music-notice-title": "For reference purposes only!",
+    "song-about": "About",
+    "song-mv": "MV",
+    "song-mv-not-found": "No MV available",
+    "lyrics": "Lyrics",
+    "lyrics-more": "View Lyrics",
+    "holy-locations": "IRL Locations referenced",
+    "holy-location-pic": "IRL reference Photos",
+    "see-map": "View on Map",
+    "music-info": "Performance Information"
+  },
+  "HomeContent": {
+    "select-song-disc": "Please select a song!",
+    "select-song-instructions": "Select a song from the sidebar to view details.",
+    "song-count": "{count} songs are available",
+    "search-tip": "You can search by song title or album name"
   }
 }

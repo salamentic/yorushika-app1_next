@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {useTranslations} from 'next-intl';
 
 interface MainProps {
   songsData: Song[];
@@ -44,6 +45,7 @@ const isAffiliateLink = (url: string): boolean => {
 };
 
 const Main = ({ songsData }: MainProps) => {
+  const t = useTranslations('SongListClient');
   const pathname = usePathname();
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
 
@@ -79,20 +81,20 @@ const Main = ({ songsData }: MainProps) => {
 
 // ホームページの空白コンテンツ
 const HomeContent = ({ songsCount }: { songsCount: number }) => {
+  const t = useTranslations('HomeContent');
   return (
     <div className="flex items-center justify-center h-full min-h-[60vh]">
       <div className="text-center space-y-4">
         <div className="text-6xl mb-4">🎵</div>
         <h2 className="text-2xl font-semibold text-gray-700">
-          楽曲を選択してください
+	{t('select-song-disc')} 
         </h2>
         <p className="text-gray-500 max-w-md mx-auto">
-          左側のサイドバーから楽曲を検索・選択すると、
-          こちらに詳細情報が表示されます
+	  {t('select-song-instructions')} 
         </p>
         <div className="mt-8 text-sm text-gray-400">
-          <p>現在 {songsCount} 件の楽曲が登録されています</p>
-          <p>楽曲名、アルバム名、読み方で検索できます</p>
+	  <p>{t('song-count', {count: songsCount})}</p>
+          <p>{t('search-tip')}</p>
         </div>
       </div>
     </div>
@@ -101,6 +103,7 @@ const HomeContent = ({ songsCount }: { songsCount: number }) => {
 
 // 楽曲詳細コンテンツ
 const SongDetailContent = ({ song }: { song: Song }) => {
+  const t = useTranslations('SongDetailContent');
   return (
     <div className="py-5 px-1">
       {/* SEO最適化されたHTML構造 */}
@@ -132,7 +135,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
           {/* Xシェアボタン追加 */}
           <div className="ml-1 mb-1">
             <XShareButton 
-              text={`ヨルシカ「${song.name}」の楽曲情報✨`}
+              text={t('share-button', {songName: song.name})}
               hashtags={["ヨルシカ", song.name, "楽曲情報"]}
               size="small"
               style="default"
@@ -140,15 +143,15 @@ const SongDetailContent = ({ song }: { song: Song }) => {
           </div>
           {/* 基本情報 */}
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">基本情報</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('basic-info')}</h2>
             <div className="mb-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
             <dl className="space-y-3">
               <div>
-                <dt className="text-base font-medium text-gray-600">アルバム</dt>
+                <dt className="text-base font-medium text-gray-600">{t('album')}</dt>
                 <dd className="text-gray-800">{song.album}</dd>
               </div>
               <div>
-                <dt className="text-base font-medium text-gray-600">リリース</dt>
+                <dt className="text-base font-medium text-gray-600">{t('release')}</dt>
                 <dd className="text-gray-800">{song.year}</dd>
               </div>
             </dl>
@@ -156,15 +159,15 @@ const SongDetailContent = ({ song }: { song: Song }) => {
 
           {/* 演奏情報 */}
             <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">演奏情報</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('music-notice-title')}</h2>
               <div className="mb-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
               {song.play_info.bpm && (
                 <>
                   <h2 className="text-sm sm:text-md font-semibold mt-2 mb-2">BPM：{song.play_info.bpm}</h2>
                   <h2 className="text-sm sm:text-md font-semibold mb-2">Key：{song.play_info.key}</h2>
-                  <h2 className="text-sm sm:text-md font-semibold mb-2">簡易コード：{song.play_info.capo}</h2>
+                  <h2 className="text-sm sm:text-md font-semibold mb-2">{t('capo')}：{song.play_info.capo}</h2>
                   {/* <h2 className="text-md font-semibold mb-2">拍子：{song.play_info.time_signature}</h2> */}
-                  <p className="mt-2 text-sm text-gray-700">※ 演奏の参考情報です</p>
+                  <p className="mt-2 text-sm text-gray-700">{t('music-notice')}</p>
                 </>
               )}
               </section>
@@ -172,12 +175,12 @@ const SongDetailContent = ({ song }: { song: Song }) => {
 
           {/* 楽曲情報 */}
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">楽曲について</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('song-about')}</h2>
             <div className="mb-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
             <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
               {song.song_info}
             </div>
-            <h2 className="text-lg font-semibold mt-4 mb-4">MV・楽曲</h2>
+            <h2 className="text-lg font-semibold mt-4 mb-4">{t('song-mv')}</h2>
             {song.mv_url ? (
               <iframe
                 className="block w-full sm:max-w-[500px] ml-1 sm:ml-5 rounded-lg"
@@ -191,7 +194,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                 allowFullScreen
               />
             ) : (
-              <div className="mt-4 mb-4 pl-4 text-gray-500">MV・楽曲メディアなし</div>
+              <div className="mt-4 mb-4 pl-4 text-gray-500">{t('song-mv-not-found')}</div>
             )}
 
             {/* <h2 className="text-lg font-semibold mt-4 mb-4">ライブ</h2>
@@ -215,7 +218,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
 
               {song.lyrics && (
                 <>
-                  <p className="text-lg font-semibold mt-4 mb-4">歌詞</p>
+                  <p className="text-lg font-semibold mt-4 mb-4">{t('lyrics')}</p>
                   <div className="space-y-3">
                     <a
                       href={song.lyrics}
@@ -234,7 +237,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
           {song?.holy_locations?.holy_locations_1?.location_name && (
             <section className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-4 sm:p-8 border border-gray-100">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">聖地情報</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('holy-locations')}</h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
               </div>
               
@@ -264,12 +267,12 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                         <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                         </svg>
-                        地図を見る
+			{t('see-map')}
                       </a>
                     )}
                     {song?.holy_locations?.holy_locations_1?.location_img_1 && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <span className="mr-2">聖地画像 1</span>
+                        <span className="mr-2">{t('holy-location-pic')} 1</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
                         <div className="flex justify-start">
                           <div className="relative w-full max-w-lg">
@@ -301,7 +304,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     )}
                     {song?.holy_locations?.holy_locations_1?.location_img_2 && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <span className="mr-2">聖地画像 2</span>
+                        <span className="mr-2">{t('holy-location-pic')} 2</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
                         <div className="flex justify-start">
                           <div className="relative w-full max-w-lg">
@@ -333,7 +336,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     )}
                     {song?.holy_locations?.holy_locations_1?.location_img_3 && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <span className="mr-2">聖地画像 3</span>
+                        <span className="mr-2">{t('holy-location-pic')} 3</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
                         <div className="flex justify-start">
                           <div className="relative w-full max-w-lg">
@@ -391,7 +394,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                         <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                         </svg>
-                        地図を見る
+			{t('see-map')}
                       </a>
                     )}
                     {song?.holy_locations?.holy_locations_2?.location_img_1 && (
@@ -428,7 +431,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     )}
                     {song?.holy_locations?.holy_locations_2?.location_img_2 && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <span className="mr-2">聖地画像 2</span>
+                        <span className="mr-2">{t('holy-location-pic')} 2</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
                         <div className="flex justify-start">
                           <div className="relative w-full max-w-lg">
@@ -519,6 +522,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                           <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                         </svg>
                         地図を見る
+			{t('see-map')}
                       </a>
                     )}
                     {song?.holy_locations?.holy_locations_3?.location_img_1 && (

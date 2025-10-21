@@ -14,5 +14,29 @@
 		"no-filter-song": "条件に一致する曲が見つかりません",
 		"no-song": "曲がありません",
 		"song-list-title": "曲一覧（全 {count}件）"
+	},
+	"SongDetailContent": {
+		"share-button": "ヨルシカ「{name}」の楽曲情報✨",
+		"basic-info": "基本情報",
+		"album": "アルバム",
+		"release": "リリース",
+		"capo": "簡易コード",
+		"time-sig": "拍子：",
+		"music-notice-title": "※ 演奏の参考情報です",
+		"song-about": "楽曲について",
+		"song-mv": "楽曲について",
+		"song-mv-not-found": "MV・楽曲メディアなし",
+		"lyrics": "歌詞",
+		"lyrics-more": "歌詞を見る",
+		"holy-locations": "聖地情報",
+		"holy-location-pic": "聖地画像",
+		"see-map": "聖地情報",
+		"music-info": "演奏情報"
+	},
+  	"HomeContent": {
+		"select-song-disc": "楽曲を選択してください",
+		"select-song-instructions": "左側のサイドバーから楽曲を検索・選択すると、こちらに詳細情報が表示されます。",
+		"song-count": "現在 {count} 件の楽曲が登録されています",
+		"search-tip": "楽曲名、アルバム名、読み方で検索できます"
 	}
 }
