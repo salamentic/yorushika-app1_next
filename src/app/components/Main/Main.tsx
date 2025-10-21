@@ -1,19 +1,25 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from "next/navigation";
+
 // firestoreからのSong型をインポート
 import { Song } from "@/types/songs";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
-import XShareButton from "@/app/components/XShareButton";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import {useTranslations} from 'next-intl';
+
+import XShareButton from "@/app/components/XShareButton";
+import AnalysisInviteEN from "@/app/components/Blurbs/AnalysisInvite/AnalysisInviteEN";
+import AnalysisInviteJP from "@/app/components/Blurbs/AnalysisInvite/AnalysisInviteJP";
+import AdminMessage from "@/app/components/Blurbs/AdminMessage/AdminMessage";
 
 interface MainProps {
   songsData: Song[];
@@ -104,6 +110,7 @@ const HomeContent = ({ songsCount }: { songsCount: number }) => {
 
 // 楽曲詳細コンテンツ
 const SongDetailContent = ({ song }: { song: Song }) => {
+  const locale = useLocale();
   const t = useTranslations('SongDetailContent');
   return (
     <div className="py-5 px-1">
@@ -1027,47 +1034,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
               )}
 
             {/* 考察募集文 */}
-            <div className="max-w-2xl mt-8 p-2">
-              <div className="rounded-lg border border-gray-200 p-4 bg-gradient-to-br from-purple-50 to-indigo-50">
-                
-                <p className="text-gray-800 text-base mb-4 leading-relaxed font-medium">
-                  🌙 あなたの考察を聞かせてください！
-                </p>
-                
-                <ul className="text-gray-600 mb-4 space-y-2 text-sm">
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">•</span>
-                    歌詞の意味や解釈
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">•</span>
-                    n-bunaさんが創る楽曲構成・各楽器パートのフレーズについて
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">•</span>
-                    suisさんの歌声の表現
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">•</span>
-                    MVや小説との関連性
-                  </li>
-                </ul>
-                
-                <p className="text-gray-700 mb-4 leading-normal text-sm">
-                  どんな角度からの解釈でも大歓迎です✨
-                </p>
-                
-                <p className="text-purple-600 font-medium mb-4 text-sm">
-                  XでDMをいただけると嬉しいです🎵
-                </p>
-                
-                <div className="border-t border-gray-200 pt-3 mt-4 bg-white/50 -mx-4 px-4 rounded-b-lg">
-                  <p className="text-xs text-gray-500 text-center">
-                    ※ ここに載せる考察は個人の見解であり、公式の見解ではありません
-                  </p>
-                </div>
-              </div>
-            </div>
+	    {locale === 'ja' ? <AnalysisInviteJP /> : <AnalysisInviteEN />}
           </section>
         </article>
 
@@ -1145,43 +1112,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
           </section> */}
         </aside>
       </div>
-      <Accordion type="single" collapsible className="w-[100%] sm:w-[66%] mt-6 bg-blue-200 rounded-md">
-        <AccordionItem value="greeting">
-          <AccordionTrigger className="pl-5 pr-5 no-underline hover:no-underlin">{t('admin-msg')}</AccordionTrigger>
-          <AccordionContent className="bg-white rounded-b-mde">
-            <div className="space-y-4 text-sm pt-5 w-[95%] mx-auto pb-3">
-              <p>こんにちは、管理人のたにぐちです。</p>
-                <p className="text-sm leading-loose">
-                  このサイトは、ヨルシカの楽曲情報をまとめたファンサイトです。 
-                  <br />
-                  ネットだと情報が点在していて見つけるのが大変なので、曲ごとに整理したら欲しい情報に素早くアクセスできるのでは？と思い作成しました。
-                  <br /> 
-                  楽曲の考察や関連する写真なども載せれるようにして、皆さんからのご協力をいただきながら、 より充実したファンサイトに育てていきたいと思っています。<br/>
-                  まだ成長途中で定期的にアップデートしていきますので、ぜひブックマークして時々覗いてみてくださいね。
-                </p>
-                                        
-                <p className="text-sm">
-                  ご要望や修正点などがございましたら、Xの
-                  <a 
-                    href="https://x.com/GuanDou29555" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 underline mx-1"
-                  >
-                    @GuanDou29555
-                  </a>
-                  までお気軽にご連絡ください。
-                </p>
-                    
-                  <div className="border-t border-gray-200 pt-3 text-left">
-                    <p className="text-xs text-gray-500">
-                      ※ このサイトは非公式のファンサイトです。
-                    </p>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+      <AdminMessage />
     </div>
   );
 };

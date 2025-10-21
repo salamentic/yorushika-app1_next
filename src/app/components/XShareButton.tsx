@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {useTranslations} from 'next-intl';
+
 
 const XShareButton = ({ 
   text = "", 
@@ -7,6 +9,7 @@ const XShareButton = ({
   style = "default" 
 }) => {
   const [currentUrl, setCurrentUrl] = useState('');
+  const t = useTranslations('XShareButton');
 
   useEffect(() => {
     // クライアントサイドで現在のURLを取得
@@ -62,7 +65,7 @@ const XShareButton = ({
       className={`${styleClasses[style as keyof typeof styleClasses]} ${sizeClasses[size as keyof typeof sizeClasses]} rounded-lg font-medium transition-colors duration-200 flex items-center gap-2 shadow-sm hover:shadow-md`}
     >
       <XIcon size={size === "small" ? 16 : size === "medium" ? 20 : 24} />
-      Xでシェア
+      {t('button-text')}
     </button>
   );
 };

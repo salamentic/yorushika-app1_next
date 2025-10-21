@@ -32,14 +32,16 @@
     "holy-location-pic": "IRL reference Photos",
     "see-map": "View on Map",
     "music-info": "Performance Information",
-    "holy-loc-request-1": "We are looking for pictures for IRL reference locations!",
-    "holy-loc-request-2": "If you're fine with sharing your pictures, I'd be glad if you DM'd me on ",
-    "holy-loc-request-3": "",
+    "holy-loc-request-1": "We are looking for pictures for more IRL reference locations!",
+    "holy-loc-request-2": "If you're fine with sharing your pictures, you can DM me on",
+    "holy-loc-request-3": "!",
     "tieup-info": "Tie-up Information",
     "analysis": "Fan theories/Analysis",
     "see-details": "details",
-    "admin-msg": "Message from the admin",
     "goods-info": "Related Merch"
+  },
+  "AdminMessage": {
+    "admin-msg": "Message from the Admin"
   },
   "HomeContent": {
     "select-song-disc": "Please select a song!",
@@ -50,6 +52,9 @@
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, en {🇺🇸 English} ja {🇯🇵日 本語} other {Unknown}}"
+  },
+  "XShareButton": {
+    "button-text": "Share on X"
   },
   "Loading": {
     "loading-msg": "Reading songs from our database...",
