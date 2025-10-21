@@ -54,5 +54,11 @@
   "Loading": {
     "loading-msg": "Reading songs from our database...",
     "wait-msg": "Please wait a moment..."
+  },
+  "NotFound": {
+    "not-found-title": "Could not find your song",
+    "not-found-notice": "The song you selected may not exist or may have been deleted",
+    "return-home": "Return to the Homepage",
+    "select-other": "Please select another song from the sidebar"
   }
 }

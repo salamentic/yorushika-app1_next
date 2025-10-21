@@ -54,5 +54,11 @@
 	"Loading": {
 	  "loading-msg": "Reading songs from our database...",
 	  "wait-msg": "Please wait a moment..."
-	}
+	},
+        "NotFound": {
+          "not-found-title": "楽曲が見つかりません",
+          "not-found-notice": "指定された楽曲は存在しないか、削除されている可能性があります。",
+          "return-home": "ホームに戻る",
+          "select-other": "左側のサイドバーから他の楽曲を選択してください"
+        }
 }
