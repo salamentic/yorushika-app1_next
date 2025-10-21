@@ -1,6 +1,7 @@
 // import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from "next-intl";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 function Header() {
   const t = useTranslations("Header");
@@ -38,6 +39,7 @@ function Header() {
 	    {t("description")}
           </p>
         </div>
+	<LocaleSwitcher />
       </header>
     </>
   );

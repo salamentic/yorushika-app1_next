@@ -9,10 +9,7 @@ Yorushika song database and fan community site
 ---
 
 ## Branch TODO:
-- Localize privacy policy, and fix redirects
 - Localize information/submission request blurbs
-- Fix links to use localization
-- Add language selector
 - Test with dummy firestore
 
 ## 📖 このプロジェクトについて / About This Project
