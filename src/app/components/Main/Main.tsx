@@ -9,6 +9,7 @@ import { Song } from "@/types/songs";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 
+
 import {
   Accordion,
   AccordionContent,
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/accordion"
 
 import XShareButton from "@/app/components/XShareButton";
+import SpotifyEmbed from '@/app/components/SpotifyEmbed';
 import AnalysisInviteEN from "@/app/components/Blurbs/AnalysisInvite/AnalysisInviteEN";
 import AnalysisInviteJP from "@/app/components/Blurbs/AnalysisInvite/AnalysisInviteJP";
 import AdminMessage from "@/app/components/Blurbs/AdminMessage/AdminMessage";
@@ -149,6 +151,15 @@ const SongDetailContent = ({ song }: { song: Song }) => {
               style="default"
             />
           </div>
+
+	  {/* Spotify Embed */}
+	  {song.spotify && (
+            <div className="max-w-3xl mx-auto p-4">
+              <SpotifyEmbed url={song.spotify} compact={false} />
+            </div>
+          )}
+
+
           {/* 基本情報 */}
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('basic-info')}</h2>
