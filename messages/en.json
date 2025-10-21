@@ -32,7 +32,7 @@
     "holy-location-pic": "IRL reference Photos",
     "see-map": "View on Map",
     "music-info": "Performance Information",
-    "holy-loc-request-1": "We are looking for pictures IRL references!",
+    "holy-loc-request-1": "We are looking for pictures for IRL reference locations!",
     "holy-loc-request-2": "If you're fine with sharing your pictures, I'd be glad if you DM'd me on ",
     "holy-loc-request-3": "",
     "tieup-info": "Tie-up Information",
@@ -46,5 +46,9 @@
     "select-song-instructions": "Select a song from the sidebar to view details.",
     "song-count": "{count} songs are available",
     "search-tip": "You can search by song title or album name"
+  },
+  "Loading": {
+    "loading-msg": "Reading songs from our database...",
+    "wait-msg": "Please wait a moment..."
   }
 }

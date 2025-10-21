@@ -46,5 +46,9 @@
 		"select-song-instructions": "左側のサイドバーから楽曲を検索・選択すると、こちらに詳細情報が表示されます。",
 		"song-count": "現在 {count} 件の楽曲が登録されています",
 		"search-tip": "楽曲名、アルバム名、読み方で検索できます"
+	},
+	"Loading": {
+	  "loading-msg": "Reading songs from our database...",
+	  "wait-msg": "Please wait a moment..."
 	}
 }
