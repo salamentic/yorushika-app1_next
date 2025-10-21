@@ -5,6 +5,7 @@ import { MdLibraryMusic } from "react-icons/md";
 import { FaMusic } from "react-icons/fa"; // タイアップアイコン用
 // firestoreからのSong型をインポート
 import { Song } from "@/types/songs";
+import {useTranslations} from 'next-intl';
 
 interface SongListClientProps {
   initialSongs: Song[];
@@ -16,6 +17,8 @@ const SongListClient = ({ initialSongs }: SongListClientProps) => {
   const [selectedSongId, setSelectedSongId] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [showOnlyTieup, setShowOnlyTieup] = useState(false); // タイアップフィルタのstate
+
+  const t = useTranslations('SongListClient');
 
   // 検索フィルタリング + タイアップフィルタリング
   const filteredSongs = useMemo(() => {
@@ -72,7 +75,7 @@ const SongListClient = ({ initialSongs }: SongListClientProps) => {
       <div className="p-2 pb-4 border-b border-gray-200">
         <span className="mt-2 sm:mt-6 mb-4 font-bold flex items-center">
           <MdLibraryMusic className="inline ml-1 mr-1 text-lg" />
-          曲一覧（全 {filteredSongs.length}件）
+	  {t('song-list-title', { count: filteredSongs.length })}
         </span>
 
         {/* 検索バー */}
@@ -83,7 +86,7 @@ const SongListClient = ({ initialSongs }: SongListClientProps) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown}
             className="block w-full p-2 pl-8 pr-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 transition-all"
-            placeholder="曲名、アルバム名、読み方で検索..."
+	    placeholder={t('input-search-placeholder')}
           />
           
           {/* 検索アイコン */}
@@ -104,7 +107,7 @@ const SongListClient = ({ initialSongs }: SongListClientProps) => {
           }`}
         >
           <FaMusic className="text-xs" />
-          <span>タイアップありのみ</span>
+          <span>{t('tieup-toggle')}</span>
           {showOnlyTieup && (
             <span className="ml-1 text-xs bg-blue-500 px-2 py-0.5 rounded-full">
               ON
@@ -143,7 +146,7 @@ const SongListClient = ({ initialSongs }: SongListClientProps) => {
         {filteredSongs.length === 0 && (
           <div className="flex items-center justify-center p-8">
             <p className="text-gray-500">
-              {searchTerm || showOnlyTieup ? '条件に一致する曲が見つかりません' : '曲がありません'}
+              {searchTerm || showOnlyTieup ? t('no-filter-song') : t('no-song')}
             </p>
           </div>
         )}

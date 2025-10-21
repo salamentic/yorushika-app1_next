@@ -7,5 +7,12 @@
 		"title": "月猫図書館",
 		"fan-site-notice": "※ 本サイトはファンによる個人運営であり、公式とは一切関係ありません",
 		"privacy-policy": "プライバシーポリシー"
+	},
+	"SongListClient": {
+		"input-search-placeholder": "曲名、アルバム名、読み方で検索...",
+		"tieup-toggle": "タイアップありのみ",
+		"no-filter-song": "条件に一致する曲が見つかりません",
+		"no-song": "曲がありません",
+		"song-list-title": "曲一覧（全 {count}件）"
 	}
 }

@@ -7,5 +7,12 @@
     "title": "Tsukineko Library",
     "fan-site-notice": "※ This website is an unofficial fan project and is not affiliated with Yorushika Official.",
     "privacy-policy": "Privacy Policy"
+  },
+  "SongListClient": {
+    "input-search-placeholder": "Search by song title, album name, or reading...",
+    "tieup-toggle": "Filter songs with tie-ups",
+    "no-filter-song": "No songs match your search criteria.",
+    "no-song": "No songs available.",
+    "song-list-title": "Song List ({count} total)"
   }
 }
