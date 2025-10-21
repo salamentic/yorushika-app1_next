@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {usePathname, useRouter, Link} from '@/i18n/navigation';
+import { usePathname } from "next/navigation";
 // firestoreからのSong型をインポート
 import { Song } from "@/types/songs";
 import DOMPurify from "isomorphic-dompurify";

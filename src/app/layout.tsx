@@ -5,6 +5,9 @@ import localFont from "next/font/local";
 import { Kaisei_Decol } from 'next/font/google'
 import "./globals.css";
 
+import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {getMessages, unstable_setRequestLocale} from 'next-intl/server';
+
 
 const kaisei = Kaisei_Decol({ 
   weight: ['500', '700'],
@@ -57,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html>
       <head>
           {/* Google Analytics */}
           <Script
@@ -76,7 +79,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kaisei.variable} antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );
