@@ -39,3 +39,6 @@ serviceAccountKey.json
 
 # firebase
 firestore-export-*.json
+
+# vim files
+*.swp

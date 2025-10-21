@@ -2,6 +2,8 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/ozet1001/yorushika-app1_next)](https://github.com/ozet1001/yorushika-app1_next/commits/master)
 [![GitHub repo size](https://img.shields.io/github/repo-size/ozet1001/yorushika-app1_next)](https://github.com/ozet1001/yorushika-app1_next)
+[![GitHub repo size](https://img.shields.io/github/repo-size/ozet1001/yorushika-app1_next)](https://github.com/ozet1001/yorushika-app1_next)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/salamentic/yorushika-app1_next/README-en.md)
 
 ヨルシカの楽曲データベース＆ファンコミュニティサイト  
 Yorushika song database and fan community site
