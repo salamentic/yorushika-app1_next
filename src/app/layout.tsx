@@ -1,4 +1,5 @@
 import type { Metadata, Viewport  } from "next";
+import {NextIntlClientProvider} from 'next-intl';
 import Script from 'next/script'
 import localFont from "next/font/local";
 import { Kaisei_Decol } from 'next/font/google'
@@ -75,7 +76,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kaisei.variable} antialiased`}
       >
-        {children}
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );
