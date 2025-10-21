@@ -5,6 +5,7 @@ import {useLocale} from 'next-intl';
 import {usePathname, useRouter} from '@/i18n/navigation';
 import {PropsWithChildren, useEffect} from 'react';
 
+// TODO: Make these localizations not hard-coded for future languages
 const stripLocale = (p: string) => p.replace(/^\/(en|ja)(?=\/|$)/, '') || '/';
 
 export default function LocaleSwitcherSelect(
@@ -14,26 +15,21 @@ export default function LocaleSwitcherSelect(
   const pathname = usePathname();
   const locale = useLocale();
 
-  // sanity: log the types so we can see if hooks exist at runtime
-  useEffect(() => {
-    // should print: function function
-    // if you see 'undefined', the import path is wrong or the helper isn't built
-    // eslint-disable-next-line no-console
-    console.log('[nav hooks]', typeof usePathname, typeof useRouter);
-  }, []);
-
   const onChange = (next: 'en' | 'ja') => {
     const clean = stripLocale(pathname);
     router.replace(clean, {locale: next});
   };
 
   return (
-    <label className="inline-flex items-center gap-2">
-      {label ? <span>{label}</span> : null}
-      <select value={locale} onChange={(e) => onChange(e.target.value as 'en' | 'ja')}>
-        {children}
-      </select>
-    </label>
-  );
+  <label className="flex flex-col items-end space-y-1">
+    <select
+      value={locale}
+      onChange={(e) => onChange(e.target.value as 'en' | 'ja')}
+      className="w-32 px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    >
+      {children}
+    </select>
+  </label>
+);
 }
 

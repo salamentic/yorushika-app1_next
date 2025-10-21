@@ -49,7 +49,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, en {English} ja {日本語} other {Unknown}}"
+    "locale": "{locale, select, en {🇺🇸 English} ja {🇯🇵日 本語} other {Unknown}}"
   },
   "Loading": {
     "loading-msg": "Reading songs from our database...",
