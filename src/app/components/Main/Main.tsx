@@ -250,8 +250,25 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                   </div>
                 </>
               )}
+	      
+	      {song.lyrics_en && (
+                <>
+                  <p className="text-lg font-semibold mt-4 mb-4">English {t('lyrics')}</p>
+                  <div className="space-y-3">
+                    <a
+                      href={song.lyrics_en}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full bg-blue-500 text-white text-center px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                    >
+                    {t('lyrics-more')}
+                    </a>
+                  </div>
+                </>
+              )}
 
           </section>
+
           {/* 聖地情報 */}
           {song?.holy_locations?.holy_locations_1?.location_name && (
             <section className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-4 sm:p-8 border border-gray-100">
@@ -643,6 +660,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                   </div>
                 )}
               </div>
+
               {/* 募集文 */}
               <div className="mt-5 p-3 bg-blue-50 border-l-4 border-blue-300 rounded-r-lg">
                 <p className="text-sm text-gray-600">
@@ -845,6 +863,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
               </div>
             )}
           </section>
+
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-semibold mb-2">{t("analysis")}</h2>
               <div className="mb-2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
