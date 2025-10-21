@@ -2,5 +2,10 @@
 	"Header": {
 		"title": "月猫図書館",
 		"description": "ヨルシカ楽曲まとめサイト"
+	},
+	"Footer": {
+		"title": "月猫図書館",
+		"fan-site-notice": "※ 本サイトはファンによる個人運営であり、公式とは一切関係ありません",
+		"privacy-policy": "プライバシーポリシー"
 	}
 }

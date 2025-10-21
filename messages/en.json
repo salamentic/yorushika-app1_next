@@ -1,1 +1,11 @@
-{}
+{
+  "Header": {
+    "title": "Tsukineko Library",
+    "description": "A comprehensive collection of Yorushika songs"
+  },
+  "Footer": {
+    "title": "Tsukineko Library",
+    "fan-site-notice": "※ This website is an unofficial fan project and is not affiliated with Yorushika Official.",
+    "privacy-policy": "Privacy Policy"
+  }
+}
