@@ -22,7 +22,7 @@
     "release": "Release",
     "capo": "Capo",
     "time-sig": "Time Signature:",
-    "music-notice-title": "For reference purposes only!",
+    "music-notice-title": "Music Performance Notes",
     "song-about": "About",
     "song-mv": "MV",
     "song-mv-not-found": "No MV available",
@@ -31,7 +31,15 @@
     "holy-locations": "IRL Locations referenced",
     "holy-location-pic": "IRL reference Photos",
     "see-map": "View on Map",
-    "music-info": "Performance Information"
+    "music-info": "Performance Information",
+    "holy-loc-request-1": "We are looking for pictures IRL references!",
+    "holy-loc-request-2": "If you're fine with sharing your pictures, I'd be glad if you DM'd me on ",
+    "holy-loc-request-3": "",
+    "tieup-info": "Tie-up Information",
+    "analysis": "Fan theories/Analysis",
+    "see-details": "details",
+    "admin-msg": "Message from the admin",
+    "goods-info": "Related Merch"
   },
   "HomeContent": {
     "select-song-disc": "Please select a song!",

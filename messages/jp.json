@@ -31,7 +31,15 @@
 		"holy-locations": "聖地情報",
 		"holy-location-pic": "聖地画像",
 		"see-map": "聖地情報",
-		"music-info": "演奏情報"
+		"music-info": "演奏情報",
+	        "holy-loc-request-1": "ここに載せる聖地画像ほしい",
+	        "holy-loc-request-2": "聖地画像を載せてもいいよ！って方は、",
+	        "holy-loc-request-3": "へDM等いただけますと大変嬉しいです",
+		"tieup-info": "タイアップ情報",
+		"analysis": "楽曲考察",
+		"see-details": "詳細を見る",
+		"admin-msg": "管理人メッセージ",
+		"goods-info": "関連グッズ"
 	},
   	"HomeContent": {
 		"select-song-disc": "楽曲を選択してください",

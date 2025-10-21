@@ -51,7 +51,7 @@ const Main = ({ songsData }: MainProps) => {
 
   // パスから楽曲IDを取得して該当楽曲を設定
   useEffect(() => {
-    const songIdMatch = pathname.match(/^\/song\/(.+)$/);
+    const songIdMatch = pathname.match(/^\/(?:[a-z]{2}(?:-[A-Z]{2})?)?\/song\/([^/]+)\/?$/);
 
     if (songIdMatch) {
       const songId = songIdMatch[1];
@@ -71,6 +71,7 @@ const Main = ({ songsData }: MainProps) => {
   }, [pathname, songsData]);
 
   // 楽曲詳細表示
+  console.log("Selected song was", selectedSong)
   if (selectedSong) {
     return <SongDetailContent song={selectedSong} />;
   }
@@ -161,7 +162,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('music-notice-title')}</h2>
               <div className="mb-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-              {song.play_info.bpm && (
+              {song.play_info?.bpm && (
                 <>
                   <h2 className="text-sm sm:text-md font-semibold mt-2 mb-2">BPM：{song.play_info.bpm}</h2>
                   <h2 className="text-sm sm:text-md font-semibold mb-2">Key：{song.play_info.key}</h2>
@@ -226,7 +227,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                       rel="noopener noreferrer"
                       className="block w-full bg-blue-500 text-white text-center px-4 py-2 rounded hover:bg-blue-600 transition-colors"
                     >
-                      歌詞を見る
+                    {t('lyrics-more')}
                     </a>
                   </div>
                 </>
@@ -627,8 +628,8 @@ const SongDetailContent = ({ song }: { song: Song }) => {
               {/* 募集文 */}
               <div className="mt-5 p-3 bg-blue-50 border-l-4 border-blue-300 rounded-r-lg">
                 <p className="text-sm text-gray-600">
-                  📸 <span className="font-medium">ここに載せる聖地画像ほしいです！</span><br /><br />
-                  聖地画像を載せてもいいよ！って方は、
+                  📸 <span className="font-medium">{t('holy-loc-request-1')}</span><br /><br />
+		  {t('holy-loc-request-2')}
                   <a 
                     href="https://x.com/GuanDou29555" 
                     target="_blank" 
@@ -637,7 +638,8 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                   >
                     X
                   </a>
-                  へDM等いただけますと大変嬉しいです！🙏<br />
+                  {t('holy-loc-request-3')} 🙏<br />
+		  
                 </p>
               </div>
             </section>
@@ -674,10 +676,10 @@ const SongDetailContent = ({ song }: { song: Song }) => {
 
           {/* タイアップ情報 */}
             <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-semibold mb-2">タイアップ情報</h2>
+              <h2 className="text-2xl font-semibold mb-2">{t('tieup-info')}</h2>
               <div className="mb-5 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
               <div className="space-y-4">
-                {Object.entries(song.tieup_info)
+                {Object.entries(song.tieup_info ?? {})
                   .filter(([, tieup_info]) => tieup_info.tieup_name)
                   .map(([key, tieup_info]) => {
                     // YouTubeのビデオIDをURLから抽出する関数
@@ -732,7 +734,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
 
           {/* グッズ情報 */}
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">関連グッズ</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('goods-info')}</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
             {song.goods?.goods_1?.goods_name && (
               <div className="space-y-2 mt-4">
@@ -759,7 +761,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     rel="noopener noreferrer"
                     className="inline-block bg-purple-500 text-white px-2 py-2 rounded hover:bg-purple-600 transition-colors"
                   >
-                    詳細を見る
+                   {t('see-details')}
                   </a>
                 )}
               </div>
@@ -789,7 +791,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     rel="noopener noreferrer"
                     className="inline-block bg-purple-500 text-white px-2 py-2 rounded hover:bg-purple-600 transition-colors"
                   >
-                    詳細を見る
+                   {t('see-details')}
                   </a>
                 )}
               </div>
@@ -819,14 +821,14 @@ const SongDetailContent = ({ song }: { song: Song }) => {
                     rel="noopener noreferrer"
                     className="inline-block bg-purple-500 text-white px-2 py-2 rounded hover:bg-purple-600 transition-colors"
                   >
-                    詳細を見る
+                   {t('see-details')}
                   </a>
                 )}
               </div>
             )}
           </section>
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold mb-2">楽曲考察</h2>
+            <h2 className="text-2xl font-semibold mb-2">{t("analysis")}</h2>
               <div className="mb-2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
 
               {/* 考察情報 */}
@@ -1145,7 +1147,7 @@ const SongDetailContent = ({ song }: { song: Song }) => {
       </div>
       <Accordion type="single" collapsible className="w-[100%] sm:w-[66%] mt-6 bg-blue-200 rounded-md">
         <AccordionItem value="greeting">
-          <AccordionTrigger className="pl-5 pr-5 no-underline hover:no-underlin">管理人メッセージ</AccordionTrigger>
+          <AccordionTrigger className="pl-5 pr-5 no-underline hover:no-underlin">{t('admin-msg')}</AccordionTrigger>
           <AccordionContent className="bg-white rounded-b-mde">
             <div className="space-y-4 text-sm pt-5 w-[95%] mx-auto pb-3">
               <p>こんにちは、管理人のたにぐちです。</p>
